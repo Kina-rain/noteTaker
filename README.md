@@ -15,7 +15,7 @@ notes continuously will allow users to have written information available when n
 
 ## Screen Shot
 
-*Link: https://https://github.com/Kina-rain/noteTaker
+*Link: https://github.com/Kina-rain/noteTaker
 
 ![alt text][screenshot]
 
