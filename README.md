@@ -20,3 +20,10 @@ notes continuously will allow users to have written information available when n
 ![alt text][screenshot]
 
 [screenshot]: https://github.com/Kina-rain/noteTaker/blob/master/screenshot.png "Note Taker"
+
+## References
+
+stackoverflow.com
+
+w3schools.com
+
