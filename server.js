@@ -40,21 +40,29 @@ app.post("/api/notes", function (req, res) {
     //get the user note from notes.html
     var userNote = req.body;
 
+    let existingNotes = [];
+    let maxID;
+    let newID;
+
     //open up the database file and read in the contents
     fs.readFile(path.join(__dirname, "db/db.json"), (err, data) => {
         if (err) throw err;
 
         //turn the data in the file into JSON so we can add the new note
-        let existingNotes = JSON.parse(data);
+        existingNotes = JSON.parse(data);
 
         //get the maxID so we can increment it
-        let maxID = existingNotes[existingNotes.length - 1].id;
+        if (existingNotes.length == 0 ){
+            newID = 0;
+        } else {
+            maxID = existingNotes[existingNotes.length - 1].id;
 
-        //make the newID a number
-        let newID = parseInt(maxID);
+             //make the newID a number
+            newID = parseInt(maxID);
 
-        //increment the ID
-        newID++;
+            //increment the ID
+            newID++;
+        }
 
         //set the id of the new note
         userNote.id = newID.toString();
@@ -89,19 +97,21 @@ app.delete("/api/notes/:id", function(req, res) {
 
         //loop through the data so we can find the right note to delete
         for(i=0; i <= existingNotes.length; i++) {
+
             //check to see if we have a match
             if (existingNotes[i].id === noteID) {
 
                 //remove the existing element from the array using splice
                 existingNotes.splice(i, 1);
 
-                //write our file and end the res to close out the delete
-                fs.writeFile(path.join(__dirname, "db/db.json"), JSON.stringify(existingNotes), function(err) {
-                    if (err) throw err;
-                    return res.end();
-                });
+                break;
             }
         }
+        //write our file and end the res to close out the delete
+        fs.writeFile(path.join(__dirname, "db/db.json"), JSON.stringify(existingNotes), function(err) {
+            if (err) throw err;
+            return res.end();
+        });
     });
 });
 
