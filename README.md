@@ -15,7 +15,10 @@ notes continuously will allow users to have written information available when n
 
 ## Screen Shot
 
-*Link: https://github.com/Kina-rain/noteTaker
+* Link: https://github.com/Kina-rain/noteTaker
+
+* Link: https://vast-everglades-53696.herokuapp.com/
+
 
 ![alt text][screenshot]
 
